@@ -7,7 +7,11 @@ class Solution:
 	        s=''
 	        while(num!=0):
 	            basedigit=num%base
-	            s='a'+s
+	            if basedigit<10:
+	                s=str(basedigit)+s
+	            else:
+	                k=chr(ord('a')+basedigit-10)
+	                s=k+s
 	            num=num//base
 	        return s
 	    for i in range(2,33):
