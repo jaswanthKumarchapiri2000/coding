@@ -17,14 +17,10 @@ class Solution
       unordered_map <int,int> d ;
       for (int i=0 ; i< N ;i++){
           if (Edge[i]!=-1){
-              if (d.find(Edge[i]) != d.end()){
               d[Edge[i]]=d[Edge[i]]+i;
-          }
-          else{
-              d[Edge[i]]=i;
+        
           }
           }
-      }
       for (int i=0 ; i< N ;i++){
           if(Edge[i]!=-1){
               int sum=d[Edge[i]];
