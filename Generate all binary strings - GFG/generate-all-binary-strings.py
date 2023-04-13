@@ -14,13 +14,13 @@ class Solution:
                 ans.append(string)
             else:
                 if string[-1]=='0':
-                    helper(ans,string+'1',n-1)
                     helper(ans,string+'0',n-1)
+                    helper(ans,string+'1',n-1)
                 else:
                     helper(ans,string+'0',n-1)
         helper(ans,'0',n)
         helper(ans,'1',n)
-        ans.sort()
+        # ans.sort()
         return ans
 
 #{ 
