@@ -4,7 +4,7 @@ class Solution:
     def kthElement(self,  nums1, nums2, m, n, k):
         if m > n:
             return self.kthElement(nums2, nums1, n, m, k)
-        low = max(0,k-n-1)
+        low = max(0,k-n)
         high = min(k,m)
         # print(low,high)
         while low <= high:
