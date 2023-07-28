@@ -1,8 +1,9 @@
+from functools import cache
 class Solution:
     def PredictTheWinner(self, nums: List[int]) -> bool:
         total=sum(nums)
         n=len(nums)
-
+        @cache
         def dfs(start,end):
             if start > end:
                 # print(start,end,score1,score2)
