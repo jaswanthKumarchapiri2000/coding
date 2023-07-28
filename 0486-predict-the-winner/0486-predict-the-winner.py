@@ -1,16 +1,14 @@
-from functools import cache
 class Solution:
     def PredictTheWinner(self, nums: List[int]) -> bool:
-        n=len(nums)
-        dp=[[0 for i in range(n+1)] for j in range(n+1)]
-        for i in range(n):
-            for j in range(n-i):
-                # print(j,j+i, end= " here   ")
-                dp[j][j+i]=max(nums[j]-dp[j+1][j+i],nums[j+i]-dp[j][j+i-1])
-            # print(dp)
-        # print(dp)
-        return dp[0][n-1]>=0
-                        
 
+        arr = [0] * (n:= len(nums))
+        
+        for i in range(n-1,-1,-1):
+            arr[i] = nums[i]
             
+            for j in range(i+1, n):
+                arr[j] = max(nums[i]-arr[j  ],
+                             nums[j]-arr[j-1])
+            
+        return arr[n-1] >= 0
         
