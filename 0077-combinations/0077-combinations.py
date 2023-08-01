@@ -1,22 +1,20 @@
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
-        arr=[ i+1 for i in range(n)]
-        ans=[]
-        def dfs(ind,res,count):
-            if ind >= n :
-                if count > k:
-                    return
-                elif count < k:
-                    return 
+        def generate_combinations(elems, num):
+            elems_tuple = tuple(elems)
+            total = len(elems_tuple)
+            if num > total:
+                return
+            curr_indices = list(range(num))
+            while True:
+                yield tuple(elems_tuple[i] for i in curr_indices)
+                for idx in reversed(range(num)):
+                    if curr_indices[idx] != idx + total - num:
+                        break
                 else:
-                    ans.append(res[:])
                     return
-            if count==k:
-                ans.append(res[:])
-            else:
-                res.append(arr[ind])
-                dfs(ind+1,res,count+1)
-                res.pop()
-                dfs(ind+1,res,count)
-        dfs(0,[],0)
-        return ans      
+                curr_indices[idx] += 1
+                for j in range(idx+1, num):
+                    curr_indices[j] = curr_indices[j-1] + 1
+
+        return [list(combination) for combination in generate_combinations(range(1, n+1), k)]
