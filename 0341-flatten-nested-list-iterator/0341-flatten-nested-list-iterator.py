@@ -40,7 +40,6 @@ class NestedIterator:
                         else:
                             temp=ele.getList()
                             acs(temp,b)
-                    return b
                 acs(helper,self.ans)
                             
         self.n=len(self.ans)
